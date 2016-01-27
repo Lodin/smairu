@@ -1,0 +1,29 @@
+{
+    "name": "smairu",
+    "description": "Use kaomoji - japanese emoji, - in your conversation with comfort",
+    "version": "0.1",
+    "manifest_version": 2,
+    "app": {
+        "background": {
+            "scripts": ["js/app.js"]
+        }
+    },
+    "browser_action": {
+        "default_icon": "images/favicon-16x16.png",
+        "default_popup": "popup.html",
+        "default_title": "Smairu"
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*/", "https://*/"],
+            "js": ["js/inj.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "icons": {
+        "16": "images/favicon-16x16.png",
+        "32": "images/favicon-32x32.png",
+        "64": "images/favicon-64x64.png",
+        "128": "images/favicon-128x128.png"
+    }
+}

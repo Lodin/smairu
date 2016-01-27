@@ -1,0 +1,16 @@
+name: smairu
+version: 0.0.1
+authors:
+- Vlad Rindevich <rindevich.vs@gmail.com>
+description: Use kaomoji - japanese emoji, - in your conversation with comfort
+dependencies:
+    angular2: 2.0.0-beta.0
+    browser: ^0.10.0
+    chrome: ^0.8.0
+    test: ^0.12.7
+    quiver: ^0.21.4
+    collection: ^1.2.0
+transformers:
+- angular2:
+    entry_points: web/main.dart
+- chrome

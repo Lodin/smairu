@@ -1,0 +1,18 @@
+{
+  "name": "smairu",
+  "version": "0.1.0",
+  "description": "Use kaomoji - japanese emoji, - in your conversation with comfort",
+  "author": "Vlad Rindevich",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp-closure-compiler": "^0.4.0",
+    "gulp-env": "^0.4.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "path": "^0.12.7",
+    "sass-flex-mixin": "^1.0.0"
+  }
+}
