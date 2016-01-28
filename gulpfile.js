@@ -43,9 +43,9 @@ gulp.task('jade', () => {
         .pipe(gulp.dest(routes.dir.app));
 });
 
-gulp.task('dart', ['sass', 'jade'], () => {
-    shell('pub build --output="build/app"')
-})
+gulp.task('dart', ['sass', 'jade'], shell.task([
+    'pub build --output="build/app"'
+]));
 
 // Sets developer environment
 gulp.task('env-dev', () => {

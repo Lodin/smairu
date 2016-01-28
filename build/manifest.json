@@ -9,7 +9,7 @@
         "default_popup": "app/web/index.html",
         "default_title": "Smairu"
     },
-    "permissions": ["clipboardWrite", "clipboardRead"],
+    "permissions": ["clipboardWrite", "clipboardRead", "tabs"],
     "content_scripts": [
         {
             "matches": ["http://*/", "https://*/"],
