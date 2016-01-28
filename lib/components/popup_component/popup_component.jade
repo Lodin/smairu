@@ -1,5 +1,8 @@
-section
-    .back &#x202E;&#x279c;
+header
+    ul
+        li.back((click)="back()") &#x279c;
+        li.title {{title}}
+        li.copied([class.shown]="copied") Copied
 section
     ul
-        li(*ngFor="#el of elements", (click)="copy(el)") {{el}}
+        li(*ngFor="#el of elements", copy="", (click)="notice()") {{el}}

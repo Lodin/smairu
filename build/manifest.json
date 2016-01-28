@@ -3,16 +3,13 @@
     "description": "Use kaomoji - japanese emoji, - in your conversation with comfort",
     "version": "0.1",
     "manifest_version": 2,
-    "app": {
-        "background": {
-            "scripts": ["js/app.js"]
-        }
-    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "browser_action": {
         "default_icon": "images/favicon-16x16.png",
-        "default_popup": "popup.html",
+        "default_popup": "app/web/index.html",
         "default_title": "Smairu"
     },
+    "permissions": ["clipboardWrite", "clipboardRead"],
     "content_scripts": [
         {
             "matches": ["http://*/", "https://*/"],

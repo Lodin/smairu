@@ -1,7 +1,7 @@
 # Files and directories created by pub
 .packages
 .pub/
-build/
+build/app/*
 packages
 pubspec.lock 
 

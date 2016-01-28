@@ -1,16 +1,34 @@
 @import '../../../node_modules/sass-flex-mixin/flex.scss';
 @import '../../styles/_mixins';
+@import '../../styles/_variables';
+
+header {
+    background-color: $clr-inv-bg-header;
+    color: $clr-inv-text;
+    font-weight: bold;
+    padding: 10px;
+}
 
 ul {
     @include ul();
     @include flexbox();
-    //@include flex-direction(column);
     @include flex-wrap(wrap);
+
+    margin: 10px;
 }
 
 li {
     @include li();
     cursor: pointer;
-    padding: 30px;
-    border: 1px solid #000;
+    font-size: 13px;
+    padding: 10px;
+    border: 1px solid $clr-border;
+
+    &:hover {
+        background-color: $clr-bg-hover;
+    }
+
+    &:active {
+        background-color: $clr-bg-active;
+    }
 }

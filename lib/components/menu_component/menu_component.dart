@@ -18,7 +18,7 @@ class MenuComponent {
     List<String> _categories;
 
     List<String> get categories => _categories;
-    void set categories(List<String> value) { print(value); _categories = value; }
+    void set categories(List<String> value) { _categories = value; }
 
     select(String category) { selected.emit(category); }
 }

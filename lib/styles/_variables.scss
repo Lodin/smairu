@@ -1,0 +1,7 @@
+$clr-border: #dedede;
+$clr-text: #757575;
+$clr-bg-hover: $clr-border;
+$clr-bg-active: darken($clr-bg-hover, 20%);
+
+$clr-inv-text: #fff;
+$clr-inv-bg-header: darken($clr-bg-hover, 40%);

@@ -45,4 +45,8 @@ class AppComponent {
         _service.select(category);
         _activePopup = true;
     }
+
+    close() {
+        _activePopup = false;
+    }
 }

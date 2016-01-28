@@ -4,11 +4,13 @@ const sass = require('gulp-sass');
 const jade = require('gulp-jade');
 const source = require('gulp-sourcemaps');
 const path = require('path');
+const shell = require('gulp-shell');
 
 const routes = (() => {
     var routes = {
         dir: {
             app: path.join(__dirname, 'lib'),
+            bundle: path.join(__dirname, 'bundle'),
         }
     }; 
 
@@ -41,6 +43,9 @@ gulp.task('jade', () => {
         .pipe(gulp.dest(routes.dir.app));
 });
 
+gulp.task('dart', ['sass', 'jade'], () => {
+    shell('pub build --output="build/app"')
+})
 
 // Sets developer environment
 gulp.task('env-dev', () => {
@@ -66,7 +71,7 @@ gulp.task('env-prod', () => {
 gulp.task('run', ['env-dev', 'sass', 'jade']);
 
 // Runs production environment
-gulp.task('run-prod', ['env-prod', 'sass', 'jade']);
+gulp.task('run-prod', ['env-prod', 'dart']);
 
 // Watches changes of all files
 gulp.task('watch', function(){
