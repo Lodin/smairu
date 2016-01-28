@@ -1,0 +1,16 @@
+@import '../../../node_modules/sass-flex-mixin/flex.scss';
+@import '../../styles/_mixins';
+
+ul {
+    @include ul();
+    @include flexbox();
+    //@include flex-direction(column);
+    @include flex-wrap(wrap);
+}
+
+li {
+    @include li();
+    cursor: pointer;
+    padding: 30px;
+    border: 1px solid #000;
+}

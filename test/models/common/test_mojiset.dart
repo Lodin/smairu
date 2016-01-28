@@ -1,7 +1,7 @@
 library smairu_test.models.mojiset;
 
 final mojisetMock = {
-    'tab': 'Happiness',
+    'category': 'Happiness',
     'data': ['(*^ω^)', '(´∀｀*)', '(-‿‿-)']
 };
 
@@ -9,8 +9,8 @@ void testMojiset() {
     group('Mojiset', () {
         test('.from() constructs Mojiset from existed Map object',
             testMojiset_from);
-        test('.fromTab() constructs Mojiset from tab name', 
-            testMojiset_fromTab);
+        test('.fromCategory() constructs Mojiset from category name', 
+            testMojiset_fromCategory);
         test('.add() adds one string (or null) element to Mojiset',
             testMojiset_add);
         test('.remove() removes one element from Mojiset by value',
@@ -25,14 +25,14 @@ void testMojiset() {
 void testMojiset_from() {
     var set = new Mojiset.from(mojisetMock);
 
-    expect(set.tab, equals('Happiness'));
+    expect(set.category, equals('Happiness'));
     expect(set.asList(), equals(['(*^ω^)', '(´∀｀*)', '(-‿‿-)']));
 }
 
-void testMojiset_fromTab() {
-    var set = new Mojiset.fromTab('Custom');
+void testMojiset_fromCategory() {
+    var set = new Mojiset.fromCategory('Custom');
 
-    expect(set.tab, equals('Custom'));
+    expect(set.category, equals('Custom'));
     expect(set.isEmpty, equals(true));
 }
 

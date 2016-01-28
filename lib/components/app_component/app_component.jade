@@ -1,11 +1,9 @@
-header
-    ul
-        li(
-            *ngFor="#tab of tabs",
-            (click)="select(tab)",
-            [class.active]="isActive(tab)"
-        ) {{tab}}
-section
-    mojiset([model]="current")
-footer
-    button((click)="addTab()") Add
+menu(
+    *ngIf="!activePopup",
+    [categories]="categories",
+    (selected)="select($event)"
+)
+popup(
+    *ngIf="activePopup",
+    [model]="current"
+)

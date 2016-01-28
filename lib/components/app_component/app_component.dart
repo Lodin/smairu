@@ -1,17 +1,17 @@
 library smairu.components.app_component;
 
-import 'package:angular2/angular2.dart' show Component, View, NgFor;
-import '../../components.dart' show MojisetComponent;
+import 'package:angular2/angular2.dart' show Component, View, NgIf;
+import '../../components.dart' show PopupComponent, MenuComponent;
 import '../../services.dart' show AppDataService;
 import '../../models.dart' show Mojiset;
 
 final mock = [
     {
-        'tab': 'Happiness',
+        'category': 'Happiness',
         'data': ['(*^ω^)', '(´∀｀*)', '(-‿‿-)']
     },
     {
-        'tab': 'Sadness',
+        'category': 'Sadness',
         'data': ['( ╥ω╥ )', '(个_个)', '(>_<)']
     }
 ];
@@ -24,25 +24,25 @@ final mock = [
     templateUrl: 'app_component.html',
     styleUrls: const ['app_component.css'],
     directives: const [
-        MojisetComponent,
-        NgFor
+        PopupComponent,
+        MenuComponent,
+        NgIf
     ]
 )
 class AppComponent {
     AppDataService _service;
+    bool _activePopup = false;
 
     AppComponent(this._service) {
         _service.load(mock);
     }
 
-    List<String> get tabs => _service.tabs;
-    
+    bool get activePopup => _activePopup;
+    List<String> get categories => _service.categories;
     Mojiset get current => _service.collection.current;
 
-    
-
-    bool isActive(String tab) => _service.isActive(tab);
-
-    void select(String tab) { _service.select(tab); }
-    void addTab() { print('Added'); }
+    select(String category) {
+        _service.select(category);
+        _activePopup = true;
+    }
 }

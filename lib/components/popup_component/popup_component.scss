@@ -1,0 +1,19 @@
+@import '../../../node_modules/sass-flex-mixin/flex.scss';
+@import '../../../node_modules/scss-utils/scss-utils.scss';
+@import '../../styles/_mixins';
+
+ul {
+    @include ul();
+    @include flexbox();
+    @include flex-wrap(wrap);
+}
+
+li {
+    @include li();
+}
+
+.back {
+    @include transform(scaleX(-1));
+    width: 30px;
+    
+}

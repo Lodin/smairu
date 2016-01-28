@@ -1,21 +1,26 @@
-library smairu.components.mojiset_component;
+library smairu.components.popup_component;
 
 import 'package:angular2/angular2.dart' show Component, View, NgFor;
+//import 'package:chrome/chrome_app.dart' as chrome;
 import '../../models.dart' show Mojiset;
 
 @Component(
-    selector: 'mojiset',
+    selector: 'popup',
     properties: const ['model']
 )
 @View(
-    templateUrl: 'mojiset_component.html',
-    styleUrls: const ['mojiset_component.css'],
+    templateUrl: 'popup_component.html',
+    styleUrls: const ['popup_component.css'],
     directives: const [NgFor]
 )
-class MojisetComponent {
+class PopupComponent {
     Mojiset _model;
 
     void set model(Mojiset value) { _model = value; }
 
     List<String> get elements => _model.asList();
+
+    void copy(String element) {
+        print(element);
+    }
 }

@@ -1,0 +1,8 @@
+@mixin ul() {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin li() {
+    list-style-type: none;
+}
