@@ -9,10 +9,13 @@
         "default_popup": "app/web/index.html",
         "default_title": "Smairu"
     },
-    "permissions": ["clipboardWrite", "clipboardRead", "tabs"],
+    "background": {
+        "script": "app/web/main.dart.js"
+    },
+    "permissions": ["clipboardWrite", "clipboardRead", "tabs", "background"],
     "content_scripts": [
         {
-            "matches": ["http://*/", "https://*/"],
+            "matches": ["http://*/*", "https://*/*"],
             "js": ["js/inj.js"],
             "run_at": "document_end"
         }

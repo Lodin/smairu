@@ -2,11 +2,11 @@ library smairu.directives.copy_directive;
 
 import 'dart:html' show document, window, Range;
 import 'package:angular2/angular2.dart' show Directive, ElementRef;
-import 'package:chrome/chrome_app.dart' as chrome;
+import 'package:chrome/chrome_ext.dart' as chrome;
 
 @Directive(
-    selector: '[copy]',
-    inputs: const ['copy'],
+    selector: '[[copy]]',
+    properties: const ['copy'],
     host: const {
         '(click)': 'onClick()'
     }
@@ -26,7 +26,7 @@ class CopyDirective {
         document.execCommand('Copy', false, null);
         selection.removeAllRanges();
 
-        sendMessage();   
+        _sendMessage();   
     }
 
     Range _createRange() {
@@ -46,7 +46,10 @@ class CopyDirective {
         );
 
         chrome.tabs.query(params).then((List<chrome.Tab> tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {'smile': _copy});
-        });
+                chrome.tabs.sendMessage(tabs[0].id, {'smile': _copy})
+                    .catchError((dynamic error) {
+                        print('No inj.js code found at this page');
+                    });
+            });
     }
 }
