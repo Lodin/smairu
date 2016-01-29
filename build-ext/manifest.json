@@ -1,6 +1,6 @@
 {
     "name": "smairu",
-    "description": "Use kaomoji - japanese emoji, - in your conversation with comfort",
+    "description": "Copy/paste japanese text emoji to input field or just copy it to clipboard at one click",
     "version": "0.1",
     "manifest_version": 2,
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
