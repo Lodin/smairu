@@ -10,7 +10,6 @@ const routes = (() => {
     var routes = {
         dir: {
             app: path.join(__dirname, 'lib'),
-            bundle: path.join(__dirname, 'bundle'),
         }
     }; 
 
@@ -45,7 +44,7 @@ gulp.task('jade', () => {
 
 // Compiles dart project
 gulp.task('dart', ['sass', 'jade'], shell.task([
-    'pub build --mode=debug --output="build/app"'
+    'pub build --mode=debug --output="build-ext/app"'
 ]));
 
 // Sets developer environment
