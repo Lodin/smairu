@@ -1,4 +1,7 @@
-part of smairu_test.utils;
+library smairu_test.utils.cursor;
+
+import 'package:test/test.dart' show test, group, expect, equals, isNotNull;
+import 'package:smairu/utils.dart' show Cursor, SmairuException;
 
 void testCursor() {
     group('Cursor', () {
@@ -15,6 +18,19 @@ void testCursor() {
         test('.previous() moves cursor backward one position',
             testCursor_previous);
     });
+}
+
+SmairuException tryError(void callback()) {
+    SmairuException expectedException;
+
+    try {
+        callback();
+    }
+    on SmairuException catch(ex) {
+        expectedException = ex;
+    }
+
+    return expectedException;
 }
 
 void testCursor_current() {

@@ -1,6 +1,9 @@
 library smairu_test.models.mojiset;
 
-final mojisetMock = {
+import 'package:test/test.dart' show test, group, expect, equals;
+import 'package:smairu/models.dart' show Mojiset;
+
+final mock = {
     'category': 'Happiness',
     'data': ['(*^ω^)', '(´∀｀*)', '(-‿‿-)']
 };
@@ -23,7 +26,7 @@ void testMojiset() {
 }
 
 void testMojiset_from() {
-    var set = new Mojiset.from(mojisetMock);
+    var set = new Mojiset.from(mock);
 
     expect(set.category, equals('Happiness'));
     expect(set.asList(), equals(['(*^ω^)', '(´∀｀*)', '(-‿‿-)']));
@@ -37,14 +40,14 @@ void testMojiset_fromCategory() {
 }
 
 void testMojiset_add() {
-    var set = new Mojiset.from(mojisetMock);
+    var set = new Mojiset.from(mock);
     set.add();
 
     expect(set.asList(), equals(['(*^ω^)', '(´∀｀*)', '(-‿‿-)', null]));
 }
 
 void testMojiset_remove() {
-    var set = new Mojiset.from(mojisetMock);
+    var set = new Mojiset.from(mock);
     set.add();
     set.remove('(-‿‿-)');
 
@@ -52,7 +55,7 @@ void testMojiset_remove() {
 }
 
 void testMojiset_removeAt() {
-    var set = new Mojiset.from(mojisetMock);
+    var set = new Mojiset.from(mock);
     set.add();
     set.removeAt(2);
 
@@ -60,7 +63,7 @@ void testMojiset_removeAt() {
 }
 
 void testMojiset_operatorIndex() {
-    var set = new Mojiset.from(mojisetMock);
+    var set = new Mojiset.from(mock);
     set.add();
     set[3] = '(◕‿◕)';
 

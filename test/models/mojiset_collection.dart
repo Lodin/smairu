@@ -1,12 +1,15 @@
 library smairu_test.models.mojiset_collection;
 
-final mojisetCollectionMock = [
+import 'package:test/test.dart' show test, group, expect, equals;
+import 'package:smairu/models.dart' show Mojiset, MojisetCollection;
+
+final mock = [
     {
-        'tab': 'Happiness',
+        'category': 'Happiness',
         'data': ['(*^ω^)', '(´∀｀*)', '(-‿‿-)']
     },
     {
-        'tab': 'Sadness',
+        'category': 'Sadness',
         'data': ['( ╥ω╥ )', '(个_个)', '(>_<)']
     }
 ];
@@ -31,62 +34,62 @@ void testMojisetCollection() {
 }
 
 void testMojisetCollection_from() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
+    var collection = new MojisetCollection.from(mock);
     
-    expect(collection[0].tab, equals('Happiness'));
+    expect(collection[0].category, equals('Happiness'));
     expect(collection[1].asList(), equals(['( ╥ω╥ )', '(个_个)', '(>_<)']));
 }
 
 void testMojisetCollection_current() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
+    var collection = new MojisetCollection.from(mock);
 
-    expect(collection.current.tab, equals('Happiness'));
+    expect(collection.current.category, equals('Happiness'));
     expect(collection.current.asList(), equals(['(*^ω^)', '(´∀｀*)', '(-‿‿-)']));
 }
 
 void testMojisetCollection_first() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
+    var collection = new MojisetCollection.from(mock);
 
-    expect(collection.first.tab, equals('Happiness'));
+    expect(collection.first.category, equals('Happiness'));
     expect(collection.first.asList(), equals(['(*^ω^)', '(´∀｀*)', '(-‿‿-)']));
 }
 
 void testMojisetCollection_last() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
+    var collection = new MojisetCollection.from(mock);
 
-    expect(collection.last.tab, equals('Sadness'));
+    expect(collection.last.category, equals('Sadness'));
     expect(collection.last.asList(), equals(['( ╥ω╥ )', '(个_个)', '(>_<)']));
 }
 
 void testMojisetCollection_add() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
-    collection.add(new Mojiset.fromTab('Custom'));
+    var collection = new MojisetCollection.from(mock);
+    collection.add(new Mojiset.fromCategory('Custom'));
     
-    expect(collection.last.tab, equals('Custom'));
+    expect(collection.last.category, equals('Custom'));
 }
 
 void testMojisetCollection_removeAt() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
+    var collection = new MojisetCollection.from(mock);
     collection.removeAt(1);
     
     expect(collection.length, equals(1));
 }
 
 void testMojisetCollection_remove() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
-    var el = new Mojiset.from(mojisetCollectionMock[0]);
+    var collection = new MojisetCollection.from(mock);
+    var el = new Mojiset.from(mock[0]);
     print(collection[0] == el);
-    collection.remove(new Mojiset.from(mojisetCollectionMock[0]));
+    collection.remove(new Mojiset.from(mock[0]));
     
     expect(collection.length, equals(1));
-    expect(collection.first.tab, equals('Sadness'));
+    expect(collection.first.category, equals('Sadness'));
 }
 
 void testMojisetCollection_toList() {
-    var collection = new MojisetCollection.from(mojisetCollectionMock);
+    var collection = new MojisetCollection.from(mock);
 
     expect(collection.toList(), equals([
-        new Mojiset.from(mojisetCollectionMock[0]),
-        new Mojiset.from(mojisetCollectionMock[1])
+        new Mojiset.from(mock[0]),
+        new Mojiset.from(mock[1])
     ]));
 }

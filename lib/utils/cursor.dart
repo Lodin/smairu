@@ -1,5 +1,7 @@
 library smairu.utils.cursor;
 
+import 'smairu_exception.dart';
+
 class Cursor {
     int _value = 0;
     final int _max;

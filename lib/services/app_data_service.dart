@@ -1,7 +1,7 @@
 library smairu.services.app_data_service;
 
 import 'package:angular2/angular2.dart' show Injectable;
-import '../models.dart' show MojisetCollection;
+import '../models.dart' show Mojiset, MojisetCollection;
 
 @Injectable()
 class AppDataService {
