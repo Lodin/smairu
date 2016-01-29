@@ -1,7 +1,7 @@
 {
   "name": "smairu",
   "version": "0.1.0",
-  "description": "Use kaomoji - japanese emoji, - in your conversation with comfort",
+  "description": "Copy/paste japanese text emoji to input field or just copy it to clipboard at one click",
   "author": "Vlad Rindevich",
   "license": "MIT",
   "devDependencies": {

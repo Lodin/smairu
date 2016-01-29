@@ -2,7 +2,9 @@ name: smairu
 version: 0.0.1
 authors:
 - Vlad Rindevich <rindevich.vs@gmail.com>
-description: Use kaomoji - japanese emoji, - in your conversation with comfort
+description: >
+    Copy/paste japanese text emoji to input field or just copy it
+    to clipboard at one click
 dependencies:
     angular2: 2.0.0-beta.0
     browser: ^0.10.0
