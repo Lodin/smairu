@@ -1,5 +1,7 @@
 library smairu.services.app_data_service;
 
+import 'dart:html' show window;
+import 'dart:convert' show JSON;
 import 'package:angular2/angular2.dart' show Injectable;
 import '../models.dart' show Mojiset, MojisetCollection;
 
@@ -32,4 +34,8 @@ class AppDataService {
 
     /// Checks if the current state of collection is equal to [category].
     bool isActive(String category) => _collection.current.category == category;
+
+    void remember(List<Map> data) {
+        window.localStorage['data'] = JSON.encode(data);
+    }
 }

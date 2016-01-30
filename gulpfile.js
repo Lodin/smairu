@@ -44,7 +44,7 @@ gulp.task('jade', () => {
 
 // Compiles dart project
 gulp.task('dart', ['sass', 'jade'], shell.task([
-    'pub build --mode=debug --output="build-ext/app"'
+    'pub build --output="build-ext/app"'
 ]));
 
 // Sets developer environment

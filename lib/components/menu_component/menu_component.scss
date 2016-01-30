@@ -13,6 +13,7 @@ ul {
     @include ul();
     @include flexbox();
     @include flex-wrap(wrap);
+    @include flex-basis(auto);
 
     margin: 10px;
 }

@@ -5,4 +5,9 @@ header
         li.copied([class.shown]="copied") Copied
 section
     ul
-        li(*ngFor="#el of elements", [copy]="el", (click)="notice()") {{el}}
+        template(ngFor="", #el="", [ngForOf]="elements")
+            li(
+                *ngIf="!isEmpty(el)",
+                [copy]="el",
+                (click)="notice()"
+            ) {{el}}

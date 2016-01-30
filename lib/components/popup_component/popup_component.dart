@@ -30,6 +30,11 @@ class PopupComponent {
     bool get copied => _copied;
     String get title => _model.category;
 
+    bool isEmpty(String element) {
+        print(element);
+        return element == null || element == '';
+    }
+
     void back() {
         returned.emit(null);
     }

@@ -1,24 +1,15 @@
 library smairu.components.app_component;
 
+import 'dart:html' show window;
+import 'dart:convert' show JSON;
 import 'package:angular2/angular2.dart' show Component, View, NgIf;
 import '../../components.dart' show PopupComponent, MenuComponent;
-import '../../services.dart' show AppDataService;
+import '../../services.dart' show AppDataService, DataLoader;
 import '../../models.dart' show Mojiset;
-
-final mock = [
-    {
-        'category': 'Happiness',
-        'data': ['(*^ω^)', '(´∀｀*)', '(-‿‿-)']
-    },
-    {
-        'category': 'Sadness',
-        'data': ['( ╥ω╥ )', '(个_个)', '(>_<)']
-    }
-];
 
 @Component(
     selector: 'app',
-    providers: const [AppDataService]
+    providers: const [AppDataService, DataLoader]
 )
 @View(
     templateUrl: 'app_component.html',
@@ -31,10 +22,18 @@ final mock = [
 )
 class AppComponent {
     AppDataService _service;
+    DataLoader _loader;
     bool _activePopup = false;
 
-    AppComponent(this._service) {
-        _service.load(mock);
+    AppComponent(this._service, this._loader) {
+        if (!window.localStorage.containsKey('data')) {
+            _loader.process().then((List<Map> data) {
+                _service.load(data);
+                _service.remember(data);
+            });
+        } else {
+            _service.load(JSON.decode(window.localStorage['data']));
+        }
     }
 
     bool get activePopup => _activePopup;
