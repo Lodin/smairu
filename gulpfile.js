@@ -6,6 +6,7 @@ const source = require('gulp-sourcemaps');
 const path = require('path');
 const shell = require('gulp-shell');
 const del = require('del');
+const sequence = require('run-sequence');
 
 const routes = (() => {
     var files = (folder) => type => path.join(folder, '**/*.' + type);
@@ -57,31 +58,31 @@ gulp.task('jade', () => {
 });
 
 // Compiles dart project
-gulp.task('dart', ['sass', 'jade'], shell.task([
+gulp.task('dart', shell.task([
     'pub build'
 ]));
 
 // Copies files from `metadata` folder to `build` folder
-gulp.task('copy-meta', ['dart'], () => {
+gulp.task('copy-meta', () => {
     return gulp.src(routes.files.metadata('json'))
         .pipe(gulp.dest(routes.build()))
 });
 
 // Copies files from `js` folder to `build` folder
-gulp.task('copy-js', ['dart'], () => {
+gulp.task('copy-js', () => {
     return gulp.src(routes.files.js('js'))
         .pipe(gulp.dest(routes.build('js')));
 });
 
 // Copies files from `images` folder to `build` folder
-gulp.task('copy-images', ['dart'], () => {
+gulp.task('copy-images', () => {
     return gulp.src(routes.files.images('png'))
         .pipe(gulp.dest(routes.build('images')));
 });
 
 // Removes generated unnesessary files from `lib` folder
-gulp.task('clean', ['copy-meta', 'copy-js', 'copy-images'], () => {
-    del([
+gulp.task('clean', () => {
+    return del([
         routes.files.app('html'),
         routes.files.app('css')
     ]);
@@ -108,10 +109,26 @@ gulp.task('env-prod', () => {
 });
 
 // Runs developer environment
-gulp.task('run', ['env-dev', 'sass', 'jade']);
+gulp.task('run', () => {
+    sequence(
+        'env-dev',
+        ['sass', 'jade']
+    );
+});
 
 // Runs production environment
-gulp.task('run-prod', ['env-prod', 'clean']);
+gulp.task('run-prod', () => {
+    sequence(
+        'env-prod',
+        ['sass', 'jade'],
+        'dart',
+        ['copy-js', 'copy-meta', 'copy-images'],
+        'clean'
+    );
+});
+
+// Runs copy tasks
+gulp.task('run-copy', ['copy-js', 'copy-meta', 'copy-images']);
 
 // Watches changes of all files
 gulp.task('watch', function(){
