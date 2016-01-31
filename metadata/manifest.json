@@ -7,13 +7,10 @@
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "browser_action": {
         "default_icon": "images/favicon-16x16.png",
-        "default_popup": "app/web/index.html",
+        "default_popup": "web/index.html",
         "default_title": "Smairu"
     },
-    "background": {
-        "script": "app/web/main.dart.js"
-    },
-    "permissions": ["clipboardWrite", "clipboardRead", "tabs", "background"],
+    "permissions": ["clipboardWrite", "clipboardRead", "tabs"],
     "content_scripts": [
         {
             "matches": ["http://*/*", "https://*/*"],
