@@ -31,7 +31,6 @@ class PopupComponent {
     String get title => _model.category;
 
     bool isEmpty(String element) {
-        print(element);
         return element == null || element == '';
     }
 
