@@ -26,5 +26,6 @@ node_modules
 
 # generated files
 *.html
+!web/*.html
 *.css
 build-ext/app/*
